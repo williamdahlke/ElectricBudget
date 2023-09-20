@@ -1,4 +1,4 @@
-﻿using ElectricBudget.Enum;
+﻿using ElectricBudget.Enums;
 
 namespace ElectricBudget.Models
 {

@@ -1,4 +1,5 @@
-﻿using ElectricBudget.Models;
+﻿using ElectricBudget.Enums;
+using ElectricBudget.Models;
 using ElectricBudget.Services;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace ElectricBudget.ViewModels
 
         public Material MaterialItem { get; set; }
 
+        public List<Measure> Measures { get; set; }
+
         public ICommand SaveCommand { get; set; }
 
 
@@ -26,8 +29,10 @@ namespace ElectricBudget.ViewModels
             IsActiveLabel = Utility.GetStringResource("TXT_ISACTIVE_MATERIAL_PT");
 
             MaterialItem = new Material();
+            Measures = Service.GetInstance().GetMeasures();
 
             SaveCommand = new DelegateCommand(SaveMaterial, CanSaveMaterial);
+            
         }
 
         private bool CanSaveMaterial(object arg)

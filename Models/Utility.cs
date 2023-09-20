@@ -1,4 +1,4 @@
-﻿using ElectricBudget.Enum;
+﻿using ElectricBudget.Enums;
 using ElectricBudget.StringResources;
 using System;
 using System.Collections.Generic;

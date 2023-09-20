@@ -1,4 +1,4 @@
-﻿using ElectricBudget.Enum;
+﻿using ElectricBudget.Enums;
 using ElectricBudget.Models;
 using ElectricBudget.StringResources;
 using System;
@@ -46,6 +46,16 @@ namespace ElectricBudget.Services
             Utility.SetResourceManager(Language.Portuguese);
 
             teste = "william";
+        }
+
+        public List<Measure> GetMeasures()
+        {
+            List<Measure> list = new List<Measure>();
+            foreach (Measure measure in typeof(Measure).GetEnumValues())
+            {
+                list.Add(measure);
+            }
+            return list;
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ElectricBudget.Enum
+namespace ElectricBudget.Enums
 {
     internal enum City
     {
