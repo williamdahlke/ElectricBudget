@@ -1,5 +1,6 @@
 ﻿using ElectricBudget.Enums;
 using ElectricBudget.Models;
+using ElectricBudget.Models.Repository;
 using ElectricBudget.Services;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,11 @@ namespace ElectricBudget.ViewModels
     {
         public string MaterialLabel { get; set; }
         public string IsActiveLabel { get; set; }
+        public string MeasureLabel { get; set; }
 
         public Material MaterialItem { get; set; }
 
-        public List<Measure> Measures { get; set; }
+        public List<AvailableMeasure> Measures { get; set; }
 
         public ICommand SaveCommand { get; set; }
 
@@ -27,22 +29,36 @@ namespace ElectricBudget.ViewModels
         {
             MaterialLabel = Utility.GetStringResource("TXT_MATERIAL_PT");
             IsActiveLabel = Utility.GetStringResource("TXT_ISACTIVE_MATERIAL_PT");
+            MeasureLabel = Utility.GetStringResource("TXT_MEASURE_MATERIAL_PT");
 
             MaterialItem = new Material();
+
             Measures = Service.GetInstance().GetMeasures();
-
-            SaveCommand = new DelegateCommand(SaveMaterial, CanSaveMaterial);
+            MaterialItem.Measure = Measures.Find(x => x.Id == 0);         
             
-        }
+            SaveCommand = new DelegateCommand(SaveMaterial, CanSaveMaterial);
 
-        private bool CanSaveMaterial(object arg)
-        {
-            return true;
+            UpdateContext();
         }
 
         private void SaveMaterial(object obj)
         {
-            MessageBox.Show(Service.GetInstance().teste);
+            MaterialRepository materialSave = new MaterialRepository();
+            materialSave.Description = MaterialItem.Description;
+            materialSave.Measure = MaterialItem.Measure.Id;
+            materialSave.IsActive = MaterialItem.IsActive;
+
+            Service.GetInstance().SaveChanges();
+        }
+
+        private bool CanSaveMaterial(object arg)
+        {
+            return !string.IsNullOrEmpty(MaterialItem.Description);
+        }
+
+        private void UpdateContext()
+        {
+            NotifyPropertyChanged(nameof(MaterialItem));
         }
     }
 }

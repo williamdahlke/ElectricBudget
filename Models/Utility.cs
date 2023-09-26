@@ -2,8 +2,10 @@
 using ElectricBudget.StringResources;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,5 +42,20 @@ namespace ElectricBudget.Models
             _cultureInfo = new CultureInfo("en-US");
         }
 
+        public static string GetEnumDescription<T>(T enumType)
+        {
+            FieldInfo fi = enumType.GetType().GetField(enumType.ToString());
+
+            DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+
+            if (attributes != null && attributes.Length > 0)
+            {
+                return attributes[0].Description;
+            }
+            else
+            {
+                return enumType.ToString();
+            }
+        }
     }
 }

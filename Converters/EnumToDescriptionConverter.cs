@@ -1,4 +1,5 @@
 ﻿using ElectricBudget.Enums;
+using ElectricBudget.Services;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -14,12 +15,15 @@ namespace ElectricBudget.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            
-           
+            string description = string.Empty;
 
-            throw new NotImplementedException();
-            
-           
+            if (value is Enum)
+            {
+                Enum valueResult = (Enum) value;
+                description = Service.GetInstance().GetEnumDescription(valueResult);                
+            }
+
+            return description;                                
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

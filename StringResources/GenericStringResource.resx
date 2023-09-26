@@ -123,4 +123,7 @@
   <data name="TXT_MATERIAL_PT" xml:space="preserve">
     <value>Descrição do Material: </value>
   </data>
+  <data name="TXT_MEASURE_MATERIAL_PT" xml:space="preserve">
+    <value>Measure:</value>
+  </data>
 </root>

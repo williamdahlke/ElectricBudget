@@ -24,7 +24,17 @@
             <StackPanel Margin="10 20 0 0" Orientation="Horizontal">
                 <TextBlock Text="{Binding IsActiveLabel, Mode=OneWay}" FontSize="16"></TextBlock>
                 <CheckBox IsChecked="{Binding MaterialItem.IsActive, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15 0 0 0"/>
-                <ComboBox ItemsSource="{Binding Measures}" SelectedItem="{Binding MaterialItem.Measure}" Width="110"></ComboBox>
+            </StackPanel>
+
+            <StackPanel Margin="10 20 0 0" Orientation="Horizontal">
+                <TextBlock Text="{Binding MeasureLabel, Mode=OneWay}" FontSize="16" Margin="0 0 20 0"/>
+                <ComboBox ItemsSource="{Binding Measures}" SelectedItem="{Binding MaterialItem.Measure, UpdateSourceTrigger=PropertyChanged}" Width="110">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Description}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
 
             <DockPanel Margin="0 40 0 0">

@@ -1,4 +1,5 @@
-﻿using ElectricBudget.ViewModels;
+﻿using ElectricBudget.Services;
+using ElectricBudget.ViewModels;
 using ElectricBudget.Views;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,9 @@ namespace ElectricBudget
         {
             InitializeComponent();
             LoadContext();
+
+            lbl_version.Text = Service.GetInstance().GetEnvironment();
+            lbl_version_number.Text =  " - " + GetAssemblyVersion();
         }
 
         public void LoadContext()
@@ -39,6 +43,14 @@ namespace ElectricBudget
         private void OpenMaterial()
         {
             new wpfMaterial().ShowDialog();
+        }
+
+        private string? GetAssemblyVersion()
+        {
+            //https://stackoverflow.com/questions/909555/how-can-i-get-the-assembly-file-version
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
+            return fvi.FileVersion;
         }
     }
 }

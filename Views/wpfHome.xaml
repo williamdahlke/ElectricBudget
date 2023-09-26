@@ -5,10 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElectricBudget"
         mc:Ignorable="d"
-        Title="Home" Height="450" Width="800">
+        Title="Orçamentos Elétricos" Height="450" Width="800">
     <Grid>
-        <StackPanel>
-            <Button Command="{Binding CreateMaterialCommand}" Content="Criar material" Width="150"></Button>
+        <Menu IsMainMenu="True">
+            <MenuItem Header="Cadastros">
+                <MenuItem Header="Materiais" Command="{Binding CreateMaterialCommand}"></MenuItem>
+                <MenuItem Header="Usuários"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Configurações">
+                <MenuItem Header="Opções"></MenuItem>
+                <MenuItem Header="Sobre"></MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal">
+            <TextBlock x:Name="lbl_version" FontSize="16" FontWeight="Bold"></TextBlock>
+            <TextBlock x:Name="lbl_version_number" FontSize="16" FontWeight="Bold"></TextBlock>
         </StackPanel>
         
     </Grid>

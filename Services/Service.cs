@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +16,10 @@ namespace ElectricBudget.Services
     internal class Service
     {
         private Language _language;
-        public string teste;
-        static Service _service;
+        private static Service _service;
+        private DataContext _dataContext;
+        private Enums.Environment _environment;
+
 
         public void SetInstance(Service service)
         {
@@ -43,19 +46,47 @@ namespace ElectricBudget.Services
         public Service()
         {
             SetLanguage(Language.Portuguese);
-            Utility.SetResourceManager(Language.Portuguese);
-
-            teste = "william";
+            SetEnvironment(Enums.Environment.Production);
+            Utility.SetResourceManager(Language.Portuguese);            
+            SetDataContext();
         }
 
-        public List<Measure> GetMeasures()
+        public List<AvailableMeasure> GetMeasures()
         {
-            List<Measure> list = new List<Measure>();
+            List<AvailableMeasure> list = new List<AvailableMeasure>();
             foreach (Measure measure in typeof(Measure).GetEnumValues())
             {
-                list.Add(measure);
+                AvailableMeasure measureObject = new AvailableMeasure(Convert.ToInt32(measure), measure.ToString(), Utility.GetEnumDescription(measure));
+                list.Add(measureObject);
             }
+            list = list.OrderBy(measure => measure.Description).ToList();
+            
             return list;
+        }
+
+        public string GetEnumDescription<T>(T enumType)
+        {
+            return Utility.GetEnumDescription(enumType);    
+        }
+
+        private void SetDataContext()
+        {
+            _dataContext = new DataContext();
+        }
+
+        public int SaveChanges()
+        {
+            return _dataContext.SaveChanges();
+        }
+
+        private void SetEnvironment(Enums.Environment environment)
+        {
+            _environment = environment;
+        }
+
+        public string GetEnvironment()
+        {
+            return Utility.GetEnumDescription(_environment);
         }
     }
 }

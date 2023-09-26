@@ -9,8 +9,8 @@ namespace ElectricBudget.Enums
 {
     internal enum Measure
     {
-        [Description("Kilo")]
-        Kg = 0,
+        [Description("Desconhecido")]
+        Unknown = 0,
         [Description("Gramas")]
         g = 1,
         [Description("Metros")]
@@ -19,7 +19,7 @@ namespace ElectricBudget.Enums
         Un = 3,
         [Description("Conjunto")]
         Cj = 4,
-        [Description("Desconhecido")]
-        Unknown = 5
+        [Description("Kilogramas")]
+        Kg = 5
     }
 }
