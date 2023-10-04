@@ -1,30 +1,29 @@
 ﻿using ElectricBudget.Models.Repository;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
+using System.Windows;
 
 namespace ElectricBudget.Services
 {
     public class DataContext : DbContext
     {
-        public DataContext() : base("Data Source=dados.db")
+        public DataContext() : base()
         {
-
+            Database.EnsureCreated();
         }
 
         public DbSet<MaterialRepository> Material { get; set; }
 
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            Database.SetInitializer<DataContext>(null);
-            base.OnModelCreating(modelBuilder);
-            // modelBuilder.Entity<Cerca>().HasKey(b => b.id);
-
+            optionsBuilder.UseSqlite("Data Source =" + System.Environment.CurrentDirectory + @"\dados.db");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<MaterialRepository>().HasKey(t => t.Id);
+        }
+
     }
 }

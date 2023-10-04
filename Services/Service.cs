@@ -1,5 +1,6 @@
 ﻿using ElectricBudget.Enums;
 using ElectricBudget.Models;
+using ElectricBudget.Models.Repository;
 using ElectricBudget.StringResources;
 using System;
 using System.Collections.Generic;
@@ -74,9 +75,18 @@ namespace ElectricBudget.Services
             _dataContext = new DataContext();
         }
 
-        public int SaveChanges()
+        public int SaveMaterialChanges(MaterialRepository material)
         {
-            return _dataContext.SaveChanges();
+            try
+            {
+                _dataContext.Material.Add(material);
+                return _dataContext.SaveChanges();
+            }
+            catch
+            {
+                return 0;
+            }
+            
         }
 
         private void SetEnvironment(Enums.Environment environment)

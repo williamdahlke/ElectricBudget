@@ -48,7 +48,15 @@ namespace ElectricBudget.ViewModels
             materialSave.Measure = MaterialItem.Measure.Id;
             materialSave.IsActive = MaterialItem.IsActive;
 
-            Service.GetInstance().SaveChanges();
+            if (Service.GetInstance().SaveMaterialChanges(materialSave) > 0)
+            {
+                MessageBox.Show("Dados salvos com sucesso!");
+            }
+            else
+            {
+                MessageBox.Show("Os dados não foram salvos!");
+            }
+             
         }
 
         private bool CanSaveMaterial(object arg)
