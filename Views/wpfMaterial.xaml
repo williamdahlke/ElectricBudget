@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
         mc:Ignorable="d"
-        Title="Materiais" Height="450" Width="800"
+        Title="Materiais" Height="400" Width="800"
         xmlns:local="clr-namespace:ElectricBudget.Converters">
     <Window.Resources>
         <local:EnumToDescriptionConverter x:Key="EnumToDescription"></local:EnumToDescriptionConverter>
@@ -12,9 +12,10 @@
     </Window.Resources>
     <Grid>
         <StackPanel>
-            <StackPanel Margin="10 10 0 0">
+            <Grid Margin="10 10 0 0">
                 <TextBlock Text="Cadastrar Materiais" Foreground="DarkBlue" FontSize="20"/>
-            </StackPanel>
+                <Button Command="{Binding CloseCommand}" HorizontalAlignment="Right" Content="Fechar" Width="40" Margin="0 0 30 0"></Button>
+            </Grid>
 
             <StackPanel Margin="10 40 0 0" Orientation="Horizontal">
                 <TextBlock Text="{Binding MaterialLabel, Mode=OneWay}" FontSize="16"></TextBlock>

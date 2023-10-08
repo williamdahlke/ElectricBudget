@@ -5,9 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElectricBudget"
         mc:Ignorable="d"
-        Title="Orçamentos Elétricos" Height="450" Width="800">
+        Title="Orçamentos Elétricos" Height="500" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Menu IsMainMenu="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="400"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Menu IsMainMenu="True" Grid.Row="0" Background="Transparent">
             <MenuItem Header="Cadastros">
                 <MenuItem Header="Materiais" Command="{Binding CreateMaterialCommand}"></MenuItem>
                 <MenuItem Header="Usuários"></MenuItem>
@@ -17,11 +23,19 @@
                 <MenuItem Header="Sobre"></MenuItem>
             </MenuItem>
         </Menu>
-
-        <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal">
-            <TextBlock x:Name="lbl_version" FontSize="16" FontWeight="Bold"></TextBlock>
-            <TextBlock x:Name="lbl_version_number" FontSize="16" FontWeight="Bold"></TextBlock>
-        </StackPanel>
         
+        <Frame x:Name="frmHome" Width="800" Margin="0 30 0 0" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" VerticalAlignment="Top" NavigationUIVisibility="Hidden" Grid.Row="1">
+            <Frame.BindingGroup>
+                <BindingGroup/>
+            </Frame.BindingGroup>
+        </Frame>
+
+        <StackPanel Orientation="Vertical" Grid.Row="2" VerticalAlignment="Bottom">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="lbl_version" FontSize="16" FontWeight="Bold"></TextBlock>
+                <TextBlock x:Name="lbl_version_number" FontSize="16" FontWeight="Bold"></TextBlock>
+            </StackPanel>
+            <ProgressBar x:Name="pbStatus" Height="20"></ProgressBar>
+        </StackPanel>    
     </Grid>
 </Window>

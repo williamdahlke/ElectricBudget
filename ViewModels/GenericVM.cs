@@ -16,7 +16,7 @@ namespace ElectricBudget.ViewModels
             throw new NotImplementedException();
         }
 
-        public void NotifyPropertyChanged(string propertyName = null)
+        public void OnPropertyChanged(string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

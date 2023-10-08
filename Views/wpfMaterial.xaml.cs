@@ -1,4 +1,5 @@
-﻿using ElectricBudget.ViewModels;
+﻿using ElectricBudget.Models.Interface;
+using ElectricBudget.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,17 +19,27 @@ namespace ElectricBudget.Views
     /// <summary>
     /// Interaction logic for wpfMaterial.xaml
     /// </summary>
-    public partial class wpfMaterial : Window
+    public partial class wpfMaterial : Window, IWindow
     {
-        public wpfMaterial()
+        Action<bool> SetIsIndeterminate;
+        Action CloseWindow;
+
+        public wpfMaterial(Action<bool> setIsIndeterminate, Action closeWindow)
         {
             InitializeComponent();
-            LoadContext();
+            SetIsIndeterminate = setIsIndeterminate;
+            CloseWindow = closeWindow;
+            LoadViewContext();
         }
 
-        public void LoadContext()
+        public void LoadViewContext()
         {
-            this.DataContext = new MaterialVM();
+            this.DataContext = new MaterialVM(SetIsIndeterminate, CloseWindow);
+        }
+
+        public void RefreshWindow()
+        {
+            throw new NotImplementedException();
         }
     }
 }
