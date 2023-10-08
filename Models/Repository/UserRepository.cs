@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace ElectricBudget.Models.Repository
 {
     [Table("Usuario")]
-    class UserRepository
+    public class UserRepository
     {
         [Key]
         [Column("cd_id")]

@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace ElectricBudget.ViewModels
 {
-    internal class HomeVM : GenericVM
+    public class HomeVM : GenericVM
     {
         private Action _createMaterial;
         private Action _createUser;

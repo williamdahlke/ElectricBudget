@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ElectricBudget.Models
 {
-    class AvailableMeasure
+    public class AvailableMeasure
     {
         public int Id { get; set; }
         public string Measure { get; set; }

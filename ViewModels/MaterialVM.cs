@@ -15,7 +15,7 @@ using System.Windows.Input;
 
 namespace ElectricBudget.ViewModels
 {
-    internal class MaterialVM : GenericVM
+    public class MaterialVM : GenericVM
     {
         public string MaterialLabel { get; set; }
         public string IsActiveLabel { get; set; }

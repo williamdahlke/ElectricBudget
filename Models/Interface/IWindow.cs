@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ElectricBudget.Models.Interface
 {
-    interface IWindow
+    public interface IWindow
     {
         void LoadViewContext();
 

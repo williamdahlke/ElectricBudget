@@ -3,7 +3,7 @@ using System;
 
 namespace ElectricBudget.Models
 {
-    internal class Material
+    public class Material
     {
         public string Description { get; set; }
 

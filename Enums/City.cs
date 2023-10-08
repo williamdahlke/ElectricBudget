@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ElectricBudget.Enums
 {
-    internal enum City
+    public enum City
     {
         [Description("Blumenau")]
         Blumenau = 0,

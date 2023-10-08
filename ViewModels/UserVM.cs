@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ElectricBudget.ViewModels
 {
-    internal class UserVM : GenericVM
+    public class UserVM : GenericVM
     {
         List<User> Users = new List<User>();
 

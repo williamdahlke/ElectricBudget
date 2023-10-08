@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ElectricBudget.Enums
 {
-    internal enum Measure
+    public enum Measure
     {
         [Description("Desconhecido")]
         Unknown = 0,

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ElectricBudget.Models
 {
-    internal static class Utility
+    public static class Utility
     {
         private static ResourceManager _resourceManager;
         private static CultureInfo _cultureInfo;

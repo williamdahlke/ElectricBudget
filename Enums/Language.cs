@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ElectricBudget.Enums
 {
-    internal enum Language
+    public enum Language
     {
         [Description("Português")]
         Portuguese = 0,

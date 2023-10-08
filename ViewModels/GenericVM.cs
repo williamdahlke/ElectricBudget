@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ElectricBudget.ViewModels
 {
-    internal class GenericVM : ICloneable
+    public class GenericVM : ICloneable
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

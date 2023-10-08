@@ -14,7 +14,7 @@ using System.Windows.Ink;
 
 namespace ElectricBudget.Services
 {
-    internal class Service
+    public class Service
     {
         private Language _language;
         private static Service _service;

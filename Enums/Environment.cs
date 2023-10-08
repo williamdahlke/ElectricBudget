@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ElectricBudget.Enums
 {
-    enum Environment
+    public enum Environment
     {
         [Description("Nenhum")]
         None = 0,
