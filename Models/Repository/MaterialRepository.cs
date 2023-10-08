@@ -8,10 +8,10 @@ namespace ElectricBudget.Models.Repository
     public class MaterialRepository
     {
         [Key]
-        [Column("id")]
+        [Column("cd_id")]
         public int Id { get; set; }
 
-        [Column("descricao")]
+        [Column("ds_descricao")]
         [Required]
         public string Description { get; set; }
 
@@ -23,7 +23,7 @@ namespace ElectricBudget.Models.Repository
         [Required]
         public DateTime CreationDate { get; set; }
 
-        [Column("cd_ativo")]
+        [Column("b_ativo")]
         public bool IsActive { get; set; }
 
         public MaterialRepository()

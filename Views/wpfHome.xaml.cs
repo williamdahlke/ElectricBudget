@@ -46,6 +46,12 @@ namespace ElectricBudget
             this.frmHome.Navigate(window.Content);
         }
 
+        private void OpenUser()
+        {
+            wpfUser window = new wpfUser();
+            this.frmHome.Navigate(window.Content);
+        }
+
         private string? GetAssemblyVersion()
         {
             //https://stackoverflow.com/questions/909555/how-can-i-get-the-assembly-file-version
@@ -56,7 +62,7 @@ namespace ElectricBudget
 
         public void LoadViewContext()
         {
-            vm = new HomeVM(OpenMaterial);
+            vm = new HomeVM(OpenMaterial, OpenUser);
             this.DataContext = vm;
         }
 

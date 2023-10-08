@@ -28,16 +28,18 @@ namespace ElectricBudget.ViewModels
         public ICommand SaveCommand { get; set; }
         public ICommand CloseCommand { get; set; }
 
-        public Action<bool> SetIsIndeterminate;
-        public Action CloseWindowAction;
+        private Action<bool> _setIsIndeterminate;
+        private Action _closeWindowAction;
+
+        private BackgroundWorker _worker;
 
         public MaterialVM(Action<bool> setIsIndeterminate, Action closeWindow)
         {         
             MaterialLabel = Utility.GetStringResource("TXT_MATERIAL_PT");
             IsActiveLabel = Utility.GetStringResource("TXT_ISACTIVE_MATERIAL_PT");
             MeasureLabel = Utility.GetStringResource("TXT_MEASURE_MATERIAL_PT");
-            SetIsIndeterminate = setIsIndeterminate;
-            CloseWindowAction = closeWindow;
+            _setIsIndeterminate = setIsIndeterminate;
+            _closeWindowAction = closeWindow;
             SaveCommand = new DelegateCommand(SaveMaterial, CanSaveMaterial);
             CloseCommand = new DelegateCommand(CloseWindow);
 
@@ -46,24 +48,24 @@ namespace ElectricBudget.ViewModels
             Measures = Service.GetInstance().GetMeasures();
             MaterialItem.Measure = Measures.Find(x => x.Id == 0);
 
-            BackgroundWorker worker = new BackgroundWorker();
-            worker.WorkerReportsProgress = true;
-            worker.DoWork += Worker_DoWork;         
-            worker.ProgressChanged += Worker_ProgressChanged;
-            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
-            worker.RunWorkerAsync();
+            _worker = new BackgroundWorker();
+            _worker.WorkerReportsProgress = true;
+            _worker.DoWork += Worker_DoWork;         
+            _worker.ProgressChanged += Worker_ProgressChanged;
+            _worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+            _worker.RunWorkerAsync();
 
             UpdateContext();
         }
 
         private void Worker_ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
-            SetIsIndeterminate(true);
+            _setIsIndeterminate(true);
         }
 
         private void Worker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
-            SetIsIndeterminate(false);
+            _setIsIndeterminate(false);
         }
 
         private void Worker_DoWork(object? sender, DoWorkEventArgs e)
@@ -105,7 +107,7 @@ namespace ElectricBudget.ViewModels
 
         public void CloseWindow(object obj)
         {
-            CloseWindowAction();
+            _closeWindowAction();
         }
 
     }

@@ -13,12 +13,14 @@ namespace ElectricBudget.ViewModels
     internal class HomeVM : GenericVM
     {
         private Action _createMaterial;
+        private Action _createUser;
         public ICommand CreateMaterialCommand { get; set; }
 
-        public HomeVM(Action openMaterial)
+        public HomeVM(Action createMaterial, Action createUser)
         {
             CreateMaterialCommand = new DelegateCommand(CreateMaterial, CanCreateMaterial);
-            _createMaterial = openMaterial;
+            _createMaterial = createMaterial;
+            _createUser = createUser;
 
             Service service = new Service();
             service.SetInstance(service);
