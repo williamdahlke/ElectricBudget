@@ -16,7 +16,7 @@
         <Menu IsMainMenu="True" Grid.Row="0" Background="Transparent">
             <MenuItem Header="Cadastros">
                 <MenuItem Header="Materiais" Command="{Binding CreateMaterialCommand}"></MenuItem>
-                <MenuItem Header="Usuários"></MenuItem>
+                <MenuItem Header="Usuários" Command="{Binding CreateUserCommand}"></MenuItem>
             </MenuItem>
             <MenuItem Header="Configurações">
                 <MenuItem Header="Opções"></MenuItem>

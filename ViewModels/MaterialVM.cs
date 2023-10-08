@@ -107,7 +107,10 @@ namespace ElectricBudget.ViewModels
 
         public void CloseWindow(object obj)
         {
-            _closeWindowAction();
+            if (!_worker.IsBusy)
+            {
+                _closeWindowAction();
+            }            
         }
 
     }

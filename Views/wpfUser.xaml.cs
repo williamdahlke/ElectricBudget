@@ -22,17 +22,19 @@ namespace ElectricBudget.Views
     public partial class wpfUser : Window, IWindow
     {
         UserVM vm;
+        private Action _closeWindow;
 
-        public wpfUser()
+        public wpfUser(Action closeWindow)
         {
             InitializeComponent();
+            _closeWindow = closeWindow;
             LoadViewContext();
         }
 
         public void LoadViewContext()
         {
-            vm = new UserVM();
-            this.DataContext = vm;
+            vm = new UserVM(_closeWindow);
+            this.DataContext = vm;                      
         }
 
         public void RefreshWindow()

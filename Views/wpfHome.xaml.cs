@@ -48,7 +48,7 @@ namespace ElectricBudget
 
         private void OpenUser()
         {
-            wpfUser window = new wpfUser();
+            wpfUser window = new wpfUser(CloseWindow);
             this.frmHome.Navigate(window.Content);
         }
 

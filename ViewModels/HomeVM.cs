@@ -15,15 +15,28 @@ namespace ElectricBudget.ViewModels
         private Action _createMaterial;
         private Action _createUser;
         public ICommand CreateMaterialCommand { get; set; }
+        public ICommand CreateUserCommand { get; set; }
 
         public HomeVM(Action createMaterial, Action createUser)
         {
             CreateMaterialCommand = new DelegateCommand(CreateMaterial, CanCreateMaterial);
+            CreateUserCommand = new DelegateCommand(CreateUser, CanCreateUser);
+
             _createMaterial = createMaterial;
             _createUser = createUser;
 
             Service service = new Service();
             service.SetInstance(service);
+        }
+
+        private bool CanCreateUser(object arg)
+        {
+            return true;
+        }
+
+        private void CreateUser(object obj)
+        {
+            _createUser();
         }
 
         public void CreateMaterial(object obj)
