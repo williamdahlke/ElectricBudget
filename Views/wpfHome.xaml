@@ -35,7 +35,7 @@
                 <TextBlock x:Name="lbl_version" FontSize="16" FontWeight="Bold"></TextBlock>
                 <TextBlock x:Name="lbl_version_number" FontSize="16" FontWeight="Bold"></TextBlock>
             </StackPanel>
-            <ProgressBar x:Name="pbStatus" Height="20"></ProgressBar>
+            <ProgressBar x:Name="pbStatus" Height="12"></ProgressBar>
         </StackPanel>    
     </Grid>
 </Window>

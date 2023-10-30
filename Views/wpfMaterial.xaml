@@ -14,9 +14,14 @@
         <StackPanel>
             <Grid Margin="10 10 0 0">
                 <TextBlock Text="Cadastrar Materiais" Foreground="DarkBlue" FontSize="20"/>
-                <Button Command="{Binding CloseCommand}" HorizontalAlignment="Right" Content="Fechar" Width="40" Margin="0 0 30 0"></Button>
+                <Button Command="{Binding CloseCommand}" HorizontalAlignment="Right" Width="70" Margin="0 0 30 0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/close.png" Width="20" Height="20" Margin="0 0 5 0"/>
+                        <TextBlock Text="Fechar"></TextBlock>
+                    </StackPanel>
+                </Button>
             </Grid>
-
+            
             <StackPanel Margin="10 40 0 0" Orientation="Horizontal">
                 <TextBlock Text="{Binding MaterialLabel, Mode=OneWay}" FontSize="16"></TextBlock>
                 <TextBox Text="{Binding MaterialItem.Description, UpdateSourceTrigger=PropertyChanged}" Width="400" Margin="10 0 0 0"></TextBox>

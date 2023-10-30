@@ -79,7 +79,7 @@ namespace ElectricBudget.StringResources {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Measure:.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Unidade:.
         /// </summary>
         internal static string TXT_MEASURE_MATERIAL_PT {
             get {

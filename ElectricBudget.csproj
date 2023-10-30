@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\close.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="StringResources\GenericStringResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -36,6 +40,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\close.png" />
   </ItemGroup>
 
 </Project>
