@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="StyleResources\**" />
+    <EmbeddedResource Remove="StyleResources\**" />
+    <None Remove="StyleResources\**" />
+    <Page Remove="StyleResources\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Images\close.png" />
   </ItemGroup>
 
@@ -26,10 +33,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GenericStringResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="StyleResources\" />
   </ItemGroup>
 
   <ItemGroup>

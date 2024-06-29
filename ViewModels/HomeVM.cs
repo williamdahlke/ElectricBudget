@@ -16,6 +16,8 @@ namespace ElectricBudget.ViewModels
         private Action _createUser;
         public ICommand CreateMaterialCommand { get; set; }
         public ICommand CreateUserCommand { get; set; }
+        public bool MyProperty { get; set; }
+
 
         public HomeVM(Action createMaterial, Action createUser)
         {

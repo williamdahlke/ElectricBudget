@@ -21,7 +21,6 @@ namespace ElectricBudget.Services
         private DataContext _dataContext;
         private Enums.Environment _environment;
 
-
         public void SetInstance(Service service)
         {
             if (service != null)

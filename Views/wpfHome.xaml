@@ -4,12 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElectricBudget"
+        xmlns:local2="clr-namespace:ElectricBudget.Converters"
         mc:Ignorable="d"
         Title="Orçamentos Elétricos" Height="500" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <local2:BooleanToVisibilityConverter x:Key="BooleanToVisibily"></local2:BooleanToVisibilityConverter>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"></RowDefinition>
-            <RowDefinition Height="400"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
         
@@ -35,7 +39,7 @@
                 <TextBlock x:Name="lbl_version" FontSize="16" FontWeight="Bold"></TextBlock>
                 <TextBlock x:Name="lbl_version_number" FontSize="16" FontWeight="Bold"></TextBlock>
             </StackPanel>
-            <ProgressBar x:Name="pbStatus" Height="12"></ProgressBar>
+            <ProgressBar x:Name="pbStatus" Height="12" Visibility="{Binding IsProgressBarVisible, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibily}}"></ProgressBar>
         </StackPanel>    
     </Grid>
 </Window>

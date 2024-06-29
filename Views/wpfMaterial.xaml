@@ -11,7 +11,16 @@
         <local:BooleanToVisibilityConverter x:Key="BooleanToVisibily"></local:BooleanToVisibilityConverter>
     </Window.Resources>
     <Grid>
-        <StackPanel>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Grid.Column="0">
             <Grid Margin="10 10 0 0">
                 <TextBlock Text="Cadastrar Materiais" Foreground="DarkBlue" FontSize="20"/>
                 <Button Command="{Binding CloseCommand}" HorizontalAlignment="Right" Width="70" Margin="0 0 30 0">
